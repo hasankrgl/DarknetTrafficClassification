@@ -163,6 +163,28 @@ def evaluateIndividualClassifiers(x, y, train_size_pct):
         #f'SimpleCART-{MAX_DEPTH}':sc,
         
     }
+    #Cross Validation 
+    kfold=KFold(n_splits=10,shuffle=True,random_state=42)
+    #
+    print('\n[CrossValidation] RandomForest')
+    crossval_acc = cross_val_score(rf, X,Y,cv=kfold)
+    print('>>> Cross Validation accuracy:',crossval_acc.mean())
+    #
+    print('\n[CrossValidation] DecisionTree')
+    crossval_acc = cross_val_score(dectree, X,Y,cv=kfold)
+    print('>>> Cross Validation accuracy:',crossval_acc.mean())
+    #
+    print('\n[CrossValidation] SimpleCART')
+    crossval_acc = cross_val_score(sc, X,Y,cv=kfold)
+    print('>>> Cross Validation accuracy:',crossval_acc.mean())
+    #
+    print('\n[CrossValidation] KNeighbors-5')
+    crossval_acc = cross_val_score(knn, X,Y,cv=kfold)
+    print('>>> Cross Validation accuracy:',crossval_acc.mean())
+    #
+    print('\n[CrossValidation] MLP')
+    crossval_acc = cross_val_score(mlpnn, X,Y,cv=kfold)
+    print('>>> Cross Validation accuracy:',crossval_acc.mean())
     
     for model_name, model in classifier_mapping.items(): 
 
