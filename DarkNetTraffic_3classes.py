@@ -32,11 +32,11 @@ N_NEIGHBORS = 5
 
 
 
-#Veriyi csvden okuma
-traffic = pd.read_csv("DarkNetTrafficOriginal.csv")
-print(f'Number of Rows: {traffic.shape[0]}') #Satırlar
-print(f'Number of Columns: {traffic.shape[1]}') # Kolonlar
-traffic.head() #İlk 5 satırı döndürür.
+#Reading data from csv
+traffic = pd.read_csv("Your CSV FILE")
+print(f'Number of Rows: {traffic.shape[0]}') #Rows
+print(f'Number of Columns: {traffic.shape[1]}') # Columns
+traffic.head() .
 
 #Removing empty columns
 traffic.drop_duplicates(subset=None, keep='first', inplace=True, ignore_index=False) 
@@ -63,13 +63,13 @@ def calculateMetrics(y_test, y_pred):
 def selectFeatures(x, y, train_size_pct=0.75):
     """
     selectFeatures
-        x : Tahminler için kullanılacak olan veri kümeleri
-        y : X içindeki her satır için hedef sınıf
-        train_size_pct : Eğitim aralığı (0.75-0ve1 arasında)
-        @return (list) Seçilen x verilerinin özellikleri
+        x : The data which is going to used to train.
+        y : The data which is going to trained.
+        train_size_pct :
+        @return (list)
     """
 
-    # Seçilecek Features'ler için sınıflandırmayı oluşturma
+    # Feature selection algorithms
     rf = RandomForestClassifier(max_depth=MAX_DEPTH, criterion='entropy', random_state=SEED) 
     dectree = DecisionTreeClassifier(max_depth=MAX_DEPTH, random_state=SEED)
 
